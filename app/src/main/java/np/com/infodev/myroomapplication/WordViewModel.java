@@ -3,7 +3,6 @@ package np.com.infodev.myroomapplication;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.support.annotation.NonNull;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 public class WordViewModel  extends AndroidViewModel {
     private WordRepository mRepository;
 
-    private LiveData<List<Word>> mAllWords;
+    private LiveData<List<ContactDetails>> mAllWords;
 
     public WordViewModel (Application application) {
         super(application);
@@ -22,9 +21,9 @@ public class WordViewModel  extends AndroidViewModel {
         mAllWords = mRepository.getAllWords();
     }
 
-    LiveData<List<Word>> getAllWords() { return mAllWords; }
+    LiveData<List<ContactDetails>> getAllWords() { return mAllWords; }
 
-    public void insert(Word word) { mRepository.insert(word); }
+    public void insert(ContactDetails contactDetails) { mRepository.insert(contactDetails); }
 
     public  void deleteAllWords(){
         mRepository.deleteAllWords();

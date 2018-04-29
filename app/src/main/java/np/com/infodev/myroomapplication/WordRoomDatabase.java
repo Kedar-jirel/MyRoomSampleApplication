@@ -9,9 +9,10 @@ import android.content.Context;
  * Created by sanjay on 4/27/2018.
  */
 
-@Database(entities = {Word.class}, version = 1)
-public abstract class WordRoomDatabase extends RoomDatabase{
+@Database(entities = {ContactDetails.class}, version = 1, exportSchema = false)
+public abstract class WordRoomDatabase extends RoomDatabase {
     public abstract WordDao wordDao();
+
     private static WordRoomDatabase INSTANCE;
 
     public static WordRoomDatabase getDatabase(final Context context) {

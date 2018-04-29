@@ -26,7 +26,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     }
 
     private final LayoutInflater mInflater;
-    private List<Word> mWords; // Cached copy of words
+    private List<ContactDetails> mContactDetails; // Cached copy of words
 
     WordListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -40,26 +40,31 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
-        if (mWords != null) {
-            Word current = mWords.get(position);
-            holder.wordItemView.setText(current.getWord());
+        if (mContactDetails != null) {
+            ContactDetails current = mContactDetails.get(position);
+            holder.wordItemView.setText(current.getName());
         } else {
             // Covers the case of data not being ready yet.
-            holder.wordItemView.setText("No Word");
+            holder.wordItemView.setText("No ContactDetails");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
-    void setWords(List<Word> words) {
-        mWords = words;
+    void setWords(List<ContactDetails> contactDetails) {
+        mContactDetails = contactDetails;
         notifyDataSetChanged();
     }
 
     // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
+    // mContactDetails has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
-        if (mWords != null)
-            return mWords.size();
+        if (mContactDetails != null)
+            return mContactDetails.size();
         else return 0;
     }
 }

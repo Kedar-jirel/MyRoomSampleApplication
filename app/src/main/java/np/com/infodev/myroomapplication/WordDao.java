@@ -14,12 +14,12 @@ import java.util.List;
 @Dao
 public interface WordDao {
     @Insert
-    void insert(Word word);
+    void insert(ContactDetails contactDetails);
 
-    @Query("DELETE FROM word_table")
+    @Query("DELETE FROM Contact_Details")
     void deleteAll();
 
-    @Query("SELECT * from word_table ORDER BY word ASC")
-    LiveData<List<Word>> getAllWords();
+    @Query("SELECT * from Contact_Details ORDER BY word ASC")
+    LiveData<List<ContactDetails>> getAllWords();
 
 }
